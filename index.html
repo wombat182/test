@@ -1,354 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cornerstone Legacy Holdings™ | Disrupting Tradition. Honoring Legacy.</title>
-  <meta name="description" content="Cornerstone Legacy Holdings is a globally trusted multi-generational stewardship platform empowering visionary capital allocators since 1847.">
-  <link rel="icon" type="image/png" href="clh-logo.png">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit Dønna — Helgelandskysten</title>
+<meta name="description" content="Din guide til Dønna på Helgelandskysten. Dønnamannen, Dønnes kirke, Dønnesfjellet, transport, drosje og SUP-utleie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --abyss:#0a0f12;
+    --deep:#0e161a;
+    --slate:#16252a;
+    --moss:#3d5751;
+    --pale:#a9b8b1;
+    --bone:#e7e3d8;
+    --bone-dim:#9a978d;
+    --gold:#b89968;
+    --line:rgba(231,227,216,.12);
+    --display:'Cormorant Garamond', Georgia, serif;
+    --body:'Jost', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--abyss);color:var(--bone);font-weight:300;
+    line-height:1.7;letter-spacing:.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  .grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .eyebrow{text-transform:uppercase;letter-spacing:.4em;font-size:.68rem;font-weight:400;
+    color:var(--gold);margin-bottom:1.5rem}
+  h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.05;letter-spacing:.005em}
+  h1 em,h2 em{font-style:italic}
+  a{color:inherit}
+
+  .btn{display:inline-block;font-family:var(--body);text-decoration:none;font-size:.72rem;
+    letter-spacing:.28em;text-transform:uppercase;font-weight:400;padding:1.05rem 2.4rem;
+    border:1px solid var(--gold);color:var(--gold);background:transparent;
+    transition:all .6s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+  .btn::after{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);
+    transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1);z-index:-1}
+  .btn:hover{color:var(--abyss)}
+  .btn:hover::after{transform:scaleX(1)}
+  .btn span{position:relative;z-index:1}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 0;
+    transition:transform .5s ease,background .5s ease,padding .5s ease}
+  nav.scrolled{background:rgba(10,15,18,.88);backdrop-filter:blur(12px);padding:1.1rem 0;border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:var(--display);font-size:1.4rem;color:var(--bone);text-decoration:none;
+    letter-spacing:.3em;text-transform:uppercase;padding-left:.3em}
+  .nav-links{list-style:none;display:flex;gap:2.6rem;align-items:center}
+  .nav-links a{color:var(--bone-dim);text-decoration:none;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;transition:color .4s}
+  .nav-links a:hover{color:var(--bone)}
+
+  /* Hero */
+  .hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;
+    justify-content:flex-start;overflow:hidden}
+  .hero-img{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,15,18,.25) 0%,rgba(10,15,18,.15) 40%,rgba(10,15,18,.95) 100%),
+      url('donnamannen.png') center/cover no-repeat;}
+  .hero-fallback{position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,#3a5a6a,#16252a 70%,var(--abyss));}
+  .hero-content{position:relative;z-index:2;max-width:1280px;width:100%;margin:0 auto;
+    padding:0 3rem 6rem}
+  .hero h1{font-size:clamp(3rem,9vw,7.5rem);margin-bottom:1.5rem;letter-spacing:.01em}
+  .hero-sub{font-size:1.1rem;max-width:460px;color:var(--bone);opacity:.9;margin-bottom:2.5rem}
+  .scroll-hint{position:absolute;bottom:2.5rem;right:3rem;color:var(--bone-dim);z-index:2;
+    font-size:.62rem;letter-spacing:.3em;text-transform:uppercase}
+
+  section{padding:8rem 3rem;border-top:1px solid var(--line)}
+  .wrap{max-width:1280px;margin:0 auto}
+  .sec-head{margin-bottom:4rem;max-width:620px}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:.5rem}
+  .lead{font-size:1.15rem;color:var(--bone-dim);max-width:620px}
+
+  /* Attractions grid */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+  .card{border:1px solid var(--line);padding:2.5rem;transition:border-color .5s,transform .5s;
+    display:flex;flex-direction:column}
+  .card:hover{border-color:rgba(184,153,104,.4);transform:translateY(-4px)}
+  .card .tag{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+  .card h3{font-size:1.7rem;margin-bottom:1rem}
+  .card p{font-size:.92rem;color:var(--bone-dim);margin-bottom:1.5rem;flex-grow:1}
+  .card .meta{font-size:.78rem;color:var(--pale);border-top:1px solid var(--line);padding-top:1.2rem;
+    display:flex;flex-direction:column;gap:.3rem}
+  .card .meta span{display:flex;justify-content:space-between}
+  .card .meta span b{color:var(--bone);font-weight:400}
+
+  /* Hike detail */
+  .hike{background:var(--deep)}
+  .hike-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .hike-facts{list-style:none}
+  .hike-facts li{display:flex;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hike-facts li span:first-child{color:var(--bone-dim)}
+  .hike-facts li span:last-child{color:var(--bone);text-align:right}
+  .hike-steps{counter-reset:step}
+  .hike-steps p{position:relative;padding-left:2.5rem;margin-bottom:1.4rem;color:var(--bone-dim);font-size:.95rem}
+  .hike-steps p::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;
+    font-family:var(--display);color:var(--gold);font-size:1.1rem}
+  .warn{margin-top:2rem;padding:1.5rem;border:1px solid rgba(184,153,104,.3);background:rgba(184,153,104,.05);
+    font-size:.88rem;color:var(--pale)}
+  .warn b{color:var(--gold);font-weight:400;display:block;margin-bottom:.4rem;letter-spacing:.1em;
+    text-transform:uppercase;font-size:.7rem}
+
+  /* Practical / contacts */
+  .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem}
+  .info-block{border:1px solid var(--line);padding:2.5rem}
+  .info-block h3{font-size:1.4rem;margin-bottom:1.5rem}
+  .info-row{display:flex;justify-content:space-between;padding:.9rem 0;border-bottom:1px solid var(--line);font-size:.92rem}
+  .info-row:last-child{border-bottom:none}
+  .info-row span:first-child{color:var(--bone-dim)}
+  .info-row a{color:var(--gold);text-decoration:none}
+  .info-row a:hover{text-decoration:underline}
+
+  /* SUP / rental */
+  .rental{background:var(--deep);text-align:center}
+  .rental .wrap{max-width:720px}
+  .rental h2{font-size:clamp(2.4rem,6vw,4rem);margin:.5rem 0 1.5rem}
+  .rental p{color:var(--bone-dim);margin-bottom:1rem}
+  .rental .price{font-family:var(--display);font-size:2rem;color:var(--bone);margin:2rem 0 1rem}
+  .rental .soon{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-top:2.5rem}
+
+  footer{padding:4rem 3rem;border-top:1px solid var(--line);text-align:center}
+  footer .logo{display:inline-block;margin-bottom:1rem}
+  footer p{font-size:.78rem;color:var(--bone-dim);opacity:.7;margin-top:.4rem}
+  .fine-print{font-size:.7rem!important;opacity:.4!important;margin-top:1.5rem!important;max-width:560px;
+    margin-left:auto;margin-right:auto;line-height:1.7}
+
+  .reveal-up{opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+  .reveal-up.in{opacity:1;transform:translateY(0)}
+
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .nav-inner{padding:0 1.5rem}
+    section{padding:5rem 1.5rem}
+    .hero-content{padding:0 1.5rem 4rem}
+    .cards{grid-template-columns:1fr}
+    .hike-grid{grid-template-columns:1fr;gap:3rem}
+    .info-grid{grid-template-columns:1fr}
+    .scroll-hint{display:none}
+  }
+</style>
 </head>
 <body>
+<div class="grain"></div>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <a href="#" class="brand">
-      <img src="clh-logo.png" alt="CLH">
-      <div>
-        Cornerstone Legacy Holdings<sup style="font-size:0.6em">™</sup>
-        <span class="tagline">Est. 1847 · Trusted Stewardship</span>
-      </div>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#approach">Our Approach</a></li>
-        <li><a href="#values">Stewardship</a></li>
-        <li><a href="#team">Leadership</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="cta">Schedule a Call →</a></li>
-      </ul>
-    </nav>
-  </header>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Dønna</a>
+    <ul class="nav-links">
+      <li><a href="#se">Severdigheter</a></li>
+      <li><a href="#donnamannen">Dønnamannen</a></li>
+      <li><a href="#sup">Leie SUP</a></li>
+      <li><a href="#praktisk">Praktisk</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="pre-headline">⚡ Trusted by Visionary Family Offices Worldwide</div>
-      <h1>Empowering <span class="highlight">Generational Wealth</span> Through Disciplined Stewardship & Innovation</h1>
-      <p class="lead">For over 175 years, Cornerstone Legacy Holdings has partnered with discerning families, foundations, and institutions to architect enduring value through our proprietary <strong>Multi-Generational Capital Framework™</strong>. We don't just manage assets — we steward legacies.</p>
-      <div class="cta-row">
-        <a href="#contact" class="btn-primary">Schedule a Discovery Call <span>→</span></a>
-        <a href="#approach" class="btn-secondary">▶ Watch Our Story</a>
-      </div>
-      <div class="trusted-by">
-        <p>Trusted Partners</p>
-        <div class="logos">
-          <span>BLACKSTONE</span>
-          <span>BRIDGEWATER</span>
-          <span>FIDELITY</span>
-          <span>JPMORGAN</span>
-          <span>VANGUARD</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<header class="hero">
+  <div class="hero-fallback"></div>
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="eyebrow reveal-up in">Helgelandskysten · 66° nord</p>
+    <h1 class="reveal-up in">Velkommen<br>til <em>Dønna.</em></h1>
+    <p class="hero-sub reveal-up in">Øya der havet, fjellet og historien møtes. Din guide til Dønnamannen, kysten og alt det praktiske — laget av folk som bor her.</p>
+    <a href="#se" class="btn reveal-up in"><span>Utforsk øya</span></a>
+  </div>
+  <div class="scroll-hint">Bla ned</div>
+</header>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="stats-grid">
-      <div class="stat">
-        <div class="number">$47B+</div>
-        <div class="label">Assets Under Stewardship</div>
-      </div>
-      <div class="stat">
-        <div class="number">175</div>
-        <div class="label">Years of Legacy</div>
-      </div>
-      <div class="stat">
-        <div class="number">98.7%</div>
-        <div class="label">Client Retention</div>
-      </div>
-      <div class="stat">
-        <div class="number">42</div>
-        <div class="label">Countries Served</div>
-      </div>
+<!-- Attractions -->
+<section id="se">
+  <div class="wrap">
+    <div class="sec-head reveal-up">
+      <p class="eyebrow">Severdigheter</p>
+      <h2>Det du ikke bør gå glipp av</h2>
     </div>
-  </section>
-
-  <!-- PILLARS -->
-  <section class="section section-light" id="approach">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="eyebrow">Our Three Pillars</span>
-        <h2>A Holistic Framework for <em>Generational Excellence</em></h2>
-        <p>Our award-winning Multi-Generational Capital Framework™ synthesizes deep institutional rigor with the agility of a boutique partnership — delivering bespoke outcomes at scale.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="icon">🏛️</div>
-          <h3>Legacy Architecture™</h3>
-          <p>We architect bespoke wealth ecosystems engineered to thrive across multiple generations, leveraging proprietary insights and deep cross-border expertise to unlock asymmetric value.</p>
-        </div>
-        <div class="pillar">
-          <div class="icon">🌱</div>
-          <h3>Conscious Capital™</h3>
-          <p>Every allocation decision is filtered through our award-winning ESG-Plus framework, ensuring your portfolio doesn't just generate returns — it generates impact for stakeholders and the planet.</p>
-        </div>
-        <div class="pillar">
-          <div class="icon">🚀</div>
-          <h3>Future-Forward Innovation</h3>
-          <p>By harnessing AI-driven analytics and our global network of thought leaders, we identify tomorrow's opportunities today — empowering you to lead, not follow, the markets of the future.</p>
+    <div class="cards">
+      <div class="card reveal-up">
+        <span class="tag">Fjelltur</span>
+        <h3>Dønnamannen</h3>
+        <p>Øyas signatur — fjellet som ligger som en mann på rygg og ser opp mot himmelen. Fra toppen åpner hele Helgelandskysten seg. En av de mest kjente turene i landsdelen.</p>
+        <div class="meta">
+          <span><span>Høyde</span><b>858 moh</b></span>
+          <span><span>Vanskelighet</span><b>Krevende</b></span>
+          <span><span>Tid t/r</span><b>5–6 timer</b></span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- APPROACH -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="approach-grid">
-        <div class="approach-image"></div>
-        <div class="approach-content">
-          <span class="eyebrow">The CLH Difference</span>
-          <h2>Where Old-World Wisdom Meets Tomorrow's Frontier</h2>
-          <p>In a world of commoditized advice and short-term thinking, Cornerstone stands apart. Our investment philosophy is grounded in the timeless principles articulated by our founder Sir Reginald Cornerstone in 1847, refined for the complexities of the modern global economy.</p>
-          <ul class="checklist">
-            <li>Bespoke, conviction-driven portfolio construction</li>
-            <li>Direct access to senior partners 24/7</li>
-            <li>Multi-jurisdictional tax-efficient structuring</li>
-            <li>Concierge-level reporting and white-glove service</li>
-            <li>Proprietary deal flow from our global network</li>
-            <li>Best-in-class ESG integration across all mandates</li>
-          </ul>
-          <a href="#contact" class="btn-primary" style="background: var(--gradient-cta); color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: 600;">Begin Your Journey →</a>
+      <div class="card reveal-up">
+        <span class="tag">Kultur · Historie</span>
+        <h3>Dønnes kirke</h3>
+        <p>En middelalderkirke i stein fra 1200-tallet, kåret til Nord-Norges vakreste. Her finnes 800 år gammel middelalderkunst og et av Norges største mausoleer. Omvisning anbefales.</p>
+        <div class="meta">
+          <span><span>Fra</span><b>1200-tallet</b></span>
+          <span><span>Ved</span><b>Dønnes Gård</b></span>
+          <span><span>Tips</span><b>Guidet omvisning</b></span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- VALUES (DEI/ESG section) -->
-  <section class="section section-dark" id="values">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="eyebrow" style="background: rgba(212,175,55,0.2);">Our Core Values</span>
-        <h2>Stewardship That Goes <em>Beyond Returns</em></h2>
-        <p>We believe true legacy is measured not only in basis points, but in the lives we touch and the communities we elevate.</p>
-      </div>
-      <div class="values">
-        <div class="value">
-          <div class="badge">🤝</div>
-          <h4>Inclusion First</h4>
-          <p>Diverse perspectives drive superior outcomes. Our team reflects the global communities we serve.</p>
-        </div>
-        <div class="value">
-          <div class="badge">🌍</div>
-          <h4>Planetary Purpose</h4>
-          <p>Every dollar deployed considers its impact on people, planet, and generations to come.</p>
-        </div>
-        <div class="value">
-          <div class="badge">💎</div>
-          <h4>Uncompromising Integrity</h4>
-          <p>We do the right thing, even when no one is watching. Especially when no one is watching.</p>
-        </div>
-        <div class="value">
-          <div class="badge">🎯</div>
-          <h4>Client Obsession</h4>
-          <p>Our clients are family. We obsess over the details so you can focus on what matters most.</p>
+      <div class="card reveal-up">
+        <span class="tag">Utsikt · Lett tur</span>
+        <h3>Dønnesfjellet</h3>
+        <p>Bare 127 moh, men utsikten er slående: Lovund, Træna, De syv søstre og Dønnamannen. Bilvei helt til toppen, eller en kort kultursti fra kirka. Kafé på toppen om sommeren.</p>
+        <div class="meta">
+          <span><span>Høyde</span><b>127 moh</b></span>
+          <span><span>Sti fra kirka</span><b>1,4 km · ~20 min</b></span>
+          <span><span>Adkomst</span><b>Bilvei eller sti</b></span>
         </div>
       </div>
-      <div class="esg-badges">
-        <div class="esg-badge"><div class="circle">B</div>B-Corp Certified</div>
-        <div class="esg-badge"><div class="circle">UN</div>UN PRI Signatory</div>
-        <div class="esg-badge"><div class="circle">★</div>Best Places to Work 2025</div>
-        <div class="esg-badge"><div class="circle">CO₂</div>Carbon Neutral</div>
-        <div class="esg-badge"><div class="circle">DEI</div>DEI Excellence Award</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section class="section section-light" id="team">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="eyebrow">Our Leadership</span>
-        <h2>Veterans of the World's Most Trusted Institutions</h2>
-        <p>Our partners bring together decades of experience from Goldman Sachs, McKinsey, Harvard Business School, and beyond.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80');"></div>
-          <h4>Reginald Cornerstone IV</h4>
-          <div class="title">Founding Managing Partner & Chief Stewardship Officer</div>
-          <p>Fifth-generation steward. Former Goldman MD. Stanford GSB. Aspen Institute Henry Crown Fellow. Speaks 4 languages and serves on 11 boards.</p>
-        </div>
-        <div class="team-card">
-          <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80');"></div>
-          <h4>Dr. Anastasia Wellington-Hayes</h4>
-          <div class="title">Chief Impact & Inclusion Officer</div>
-          <p>Harvard PhD in Sustainable Finance. TED speaker. Listed in Forbes 30 Under 30 (twice). Passionate about ocean conservation and ethical AI.</p>
-        </div>
-        <div class="team-card">
-          <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80');"></div>
-          <h4>Marcus Chen-Rothschild</h4>
-          <div class="title">Head of Multi-Generational Strategy</div>
-          <p>Former McKinsey Senior Partner. Co-author of <em>The Generational Imperative</em> (Wiley, 2023). Advisor to three sovereign wealth funds.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <span class="eyebrow">Client Testimonials</span>
-        <h2>Trusted by the World's Most Discerning Families</h2>
-      </div>
-      <div class="testimonials">
-        <div class="testimonial">
-          <blockquote>Cornerstone didn't just manage our family's wealth — they reframed how three generations think about purpose, legacy, and impact. Truly transformational.</blockquote>
-          <div class="author">
-            <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80');"></div>
-            <div>
-              <div class="name">Eleanor van der Berg</div>
-              <div class="role">Principal, van der Berg Family Office</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <blockquote>In 30 years of institutional finance, I have never encountered a team so deeply aligned with their clients' long-term vision. Cornerstone is in a category of one.</blockquote>
-          <div class="author">
-            <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80');"></div>
-            <div>
-              <div class="name">Sir Jonathan Pemberton-Smyth</div>
-              <div class="role">Chairman Emeritus, Pemberton Holdings</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section" id="contact">
-    <div class="inner">
-      <h2>Ready to Architect Your Family's Legacy?</h2>
-      <p>Schedule a complimentary discovery call with one of our senior partners. Limited capacity — we onboard fewer than 12 new families per year.</p>
-      <a href="mailto:partnerships@cornerstonelegacy.com" class="btn-primary">Schedule a Discovery Call →</a>
-      <div style="margin-top: 2rem; opacity: 0.6; font-size: 0.85rem;">
-        <em>Average response time: under 4 hours · Confidential & secure</em>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <div class="newsletter-inner">
-      <h3>The Cornerstone Quarterly</h3>
-      <p>Curated insights on generational wealth, impact investing, and the future of family stewardship — delivered to your inbox four times a year. No noise, just signal.</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing.');">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit">Subscribe</button>
-      </form>
-      <p class="privacy">By subscribing, you agree to our Privacy Policy. We respect your inbox.</p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="clh-logo.png" alt="CLH">
-        <h4>Cornerstone Legacy Holdings™</h4>
-        <p>A globally trusted multi-generational stewardship platform empowering visionary capital allocators since 1847.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Our Approach</a></li>
-          <li><a href="#">Leadership</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Insights</h5>
-        <ul>
-          <li><a href="#">Quarterly Letter</a></li>
-          <li><a href="#">White Papers</a></li>
-          <li><a href="#">Webinars</a></li>
-          <li><a href="#">Podcast</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookie Settings</a></li>
-          <li><a href="#">Disclosures</a></li>
-          <li><a href="#">Form ADV</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Cornerstone Legacy Holdings™. All rights reserved. Investment advisory services offered through Cornerstone Legacy Advisors, LLC, an SEC-registered investment adviser.</div>
-      <div class="social">
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Twitter">𝕏</a>
-        <a href="#" aria-label="YouTube">▶</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- COOKIE BANNER -->
-  <div class="cookie-banner" id="cookieBanner">
-    <div class="text">
-      <strong>🍪 We value your privacy.</strong> We use cookies to enhance your browsing experience, deliver personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
-    </div>
-    <div class="actions">
-      <button onclick="document.getElementById('cookieBanner').style.display='none'">Manage Preferences</button>
-      <button class="accept" onclick="document.getElementById('cookieBanner').style.display='none'">Accept All</button>
     </div>
   </div>
+</section>
 
-  <!-- CHAT WIDGET -->
-  <div class="chat-widget" onclick="alert('A senior partner will be with you shortly.');">💬</div>
+<!-- Dønnamannen detail -->
+<section class="hike" id="donnamannen">
+  <div class="wrap">
+    <div class="sec-head reveal-up">
+      <p class="eyebrow">Turbeskrivelse</p>
+      <h2>Opp Dønnamannen</h2>
+      <p class="lead">Fjellet har flere topper — Panna, Nesa, Leppa og Haka — som alle følger profilen av en mann som ser mot himmelen. Leppa er hovedtoppen på 858 moh, og den de fleste går.</p>
+    </div>
+    <div class="hike-grid">
+      <div class="reveal-up">
+        <ul class="hike-facts">
+          <li><span>Høyde</span><span>858 moh (Leppa)</span></li>
+          <li><span>Lengde t/r</span><span>ca. 8 km</span></li>
+          <li><span>Tid</span><span>5–6 timer t/r (~2,5–3 t opp)</span></li>
+          <li><span>Vanskelighet</span><span>Krevende — for erfarne</span></li>
+          <li><span>Startpunkt</span><span>Breivika (fra Bjørn) / Einvika (fra Herøy)</span></li>
+          <li><span>Merking</span><span>Stort sett god, svak i ura</span></li>
+        </ul>
+        <div class="warn reveal-up">
+          <b>Viktig om sikkerhet</b>
+          Stien går tett ved stup flere steder, og det er to partier rundt 600–700 moh som krever klyving. Gå kun i god sikt og tørre forhold — fjellet blir farlig og glatt i vått vær. Ta med GPS/kart; merkingen kan være svak i steinura. Ikke en tur for deg med høydeskrekk.
+        </div>
+      </div>
+      <div class="reveal-up">
+        <div class="hike-steps">
+          <p>Fra Bjørn fergekai, kjør mot Solfjellsjøen nordover. Like før Solfjellsjøen, ta av til venstre ved skiltet mot Breivika, og følg veien til den tar slutt — der ligger parkeringen.</p>
+          <p>Fra parkeringen følger du en tydelig sti i et flatt parti i ca. 15 minutter inn mot Hagaskardet.</p>
+          <p>Stien svinger oppover mot høyre gjennom bjørkeskogen. Dette partiet er relativt lettgått og ikke spesielt luftig — de fleste kommer greit over tregrensen.</p>
+          <p>Over tregrensen møter du et skilt: til venstre går det mot Panna, til høyre mot Leppa og Haka. Følg mot Leppa for hovedtoppen.</p>
+          <p>De siste partene blir brattere, med to steder som krever litt klyving. Hold deg nøye til stien — den går tett ved stup.</p>
+          <p>På toppen av Leppa (858 moh) åpner panoramaet seg: Vega, Lovund, Træna, De syv søstre og kysten i alle retninger.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ANIMATE STAT NUMBERS -->
-  <script>
-  // Make the stat numbers count up on scroll
-  const stats = document.querySelectorAll('.stat .number');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.done) {
-        entry.target.dataset.done = '1';
-        const final = entry.target.textContent;
-        const match = final.match(/^([\$])?([\d.]+)(.*)$/);
-        if (match) {
-          const prefix = match[1] || '';
-          const num = parseFloat(match[2]);
-          const suffix = match[3] || '';
-          let current = 0;
-          const step = num / 60;
-          const tick = () => {
-            current += step;
-            if (current >= num) {
-              entry.target.textContent = final;
-            } else {
-              entry.target.textContent = prefix + (num >= 100 ? Math.round(current) : current.toFixed(1)) + suffix;
-              requestAnimationFrame(tick);
-            }
-          };
-          tick();
-        }
-      }
-    });
-  }, { threshold: 0.5 });
-  stats.forEach(s => observer.observe(s));
-  </script>
+<!-- SUP rental -->
+<section class="rental" id="sup">
+  <div class="wrap reveal-up">
+    <p class="eyebrow">Aktivitet</p>
+    <h2>Leie SUP-brett</h2>
+    <p>Opplev Dønna fra sjøen. Vi leier ut stand up paddle-brett — perfekt for rolige sommerdager i skjærgården. Vest og enkel innføring følger med.</p>
+    <div class="price">Ta kontakt for pris &amp; tilgjengelighet</div>
+    <p>Send oss en melding, så finner vi en tid som passer.</p>
+    <a href="mailto:hei@visitdonna.no" class="btn" style="margin-top:1.5rem"><span>Send forespørsel</span></a>
+    <p class="soon">Kajakk kommer etter hvert</p>
+  </div>
+</section>
 
+<!-- Practical info -->
+<section id="praktisk">
+  <div class="wrap">
+    <div class="sec-head reveal-up">
+      <p class="eyebrow">Praktisk</p>
+      <h2>Komme seg hit &amp; rundt</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-block reveal-up">
+        <h3>Transport</h3>
+        <div class="info-row"><span>Ferje fra Sandnessjøen</span><span>til Bjørn fergekai</span></div>
+        <div class="info-row"><span>Ferje fra Søvik / Herøy</span><span>sørlig adkomst</span></div>
+        <div class="info-row"><span>Dønna Taxi</span><a href="tel:004746555516">465 55 516</a></div>
+        <div class="info-row"><span>Ferjeruter</span><span>sjekk Torghatten Nord / Reis Nordland</span></div>
+      </div>
+      <div class="info-block reveal-up">
+        <h3>Mat &amp; opphold</h3>
+        <div class="info-row"><span>Dønnesfjellstua</span><span>kafé/restaurant, lokale råvarer</span></div>
+        <div class="info-row"><span>Dønnes Gård</span><span>overnatting, historisk gård</span></div>
+        <div class="info-row"><span>Sesong</span><span>flere tilbud åpne om sommeren</span></div>
+        <div class="info-row"><span>Beste tid</span><span>midnattssol &amp; solnedgang fra fjellet</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo">Dønna</a>
+  <p>Din lokale guide til Dønna på Helgelandskysten</p>
+  <p>© 2026</p>
+  <p class="fine-print">Vi er ikke ansvarlige for endringer i ruter, åpningstider eller priser hos tredjeparter — sjekk alltid offisielle kilder før avreise. Fjellturer skjer på eget ansvar; vurder vær, sikt og egen erfaring.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal-up:not(.in)').forEach(el=>obs.observe(el));
+
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    if(window.pageYOffset>60)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+  });
+</script>
 </body>
 </html>

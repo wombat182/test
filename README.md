@@ -1,19 +1,35 @@
-# Cornerstone Legacy Holdings™
+# Visit Dønna — turistportal
 
-> "Disrupting Tradition. Honoring Legacy."
+Enkel, rask turistside for Dønna på Helgelandskysten.
 
-A globally trusted multi-generational stewardship platform empowering visionary capital allocators since 1847.
+## Filer
+- `index.html` — hele siden (design, tekst og animasjoner bakt inn)
+- `donnamannen.png` — hero-bildet av Dønnamannen
 
-## Files
+VIKTIG: begge filene må ligge i SAMME mappe i repoet, ellers vises ikke bildet.
 
-- `index.html` — landing page
-- `style.css` — brand system
-- `clh-logo.png` — official mark
+## Legg ut på GitHub Pages
+1. Last opp begge filene i repoet.
+2. Settings -> Pages -> Source: "Deploy from a branch", branch `main`, mappe `/ (root)`.
+3. Hard-refresh med Cmd+Shift+R etter et par minutter.
 
-## Deployment
+## Endre innhold
+Alt ligger i index.html. Søk etter teksten du vil bytte:
+- Drosjenummer: søk `465 55 516`
+- E-post: søk `hei@visitdonna.no` (står to steder)
+- SUP-pris: søk `Ta kontakt for pris`
+- Farger: helt øverst i <style> under :root
 
-Drop into a GitHub repository, enable GitHub Pages.
+## Bytte hero-bildet
+Legg et nytt bilde i mappa og kall det `donnamannen.png` (eller endre filnavnet
+i index.html der det står `donnamannen.png`). Liggende format (bredt) funker best.
 
----
+## Neste steg å vurdere
+- Ekte bilder til severdighets-kortene (kirka, Dønnesfjellet).
+- Lenker til offisielle ferjeruter (Torghatten Nord / Reis Nordland) som oppdateres.
+- Bookingløsning for SUP når forespørslene kommer (start med e-post/skjema).
+- Sjekk og oppdater åpningstider/priser jevnlig — turister mister tillit til utdatert info.
 
-*Investment advisory services offered through Cornerstone Legacy Advisors, LLC, an SEC-registered investment adviser. Past performance is not indicative of future results. This is not financial advice.*
+## Ansvar (SUP-utleie)
+Før første utleie: tegn forsikring, lag en enkel leieavtale med ansvarsfraskrivelse,
+og gi en sikkerhetsinstruks (vest, sjekk vær/vind, ikke padle ut i fralandsvind).
