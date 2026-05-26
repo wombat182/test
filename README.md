@@ -33,3 +33,10 @@ i index.html der det står `donnamannen.png`). Liggende format (bredt) funker be
 ## Ansvar (SUP-utleie)
 Før første utleie: tegn forsikring, lag en enkel leieavtale med ansvarsfraskrivelse,
 og gi en sikkerhetsinstruks (vest, sjekk vær/vind, ikke padle ut i fralandsvind).
+
+
+## Oppdatering
+
+Denne pakken inneholder nå 10 artikkelsider i mappen `artikler/`, samt `CNAME` for donnamannen.no. Forsidens eksisterende stil er beholdt; artiklene gjenbruker samme uttrykk.
+
+Artiklene er førsteutkast og bør faktasjekkes mot oppdaterte kilder før publisering, særlig fergeruter, åpningstider og praktisk besøksinformasjon.
